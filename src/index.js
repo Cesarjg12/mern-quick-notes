@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './pages/App/App';
+import NotesForm from './components/Notes/NotesForm';
+import NotesList from './components/Notes/NotesList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router><App /></Router>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/notes/add" element={<NotesForm />} />
+        <Route path="/notes" element={<NotesList />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 
