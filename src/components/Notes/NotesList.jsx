@@ -6,10 +6,14 @@ function NotesList() {
   useEffect(() => {
     async function fetchNotes() {
       try {
+        const accessToken = localStorage.getItem('access_token'); 
+        if (!accessToken) return; 
+
         const response = await fetch('/api/notes', {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`
           }
         });
 
